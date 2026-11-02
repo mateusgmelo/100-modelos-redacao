@@ -121,6 +121,8 @@ details.temas[open] summary:after{content:'–'}
 .plan li{display:flex;gap:10px}
 .plan li:before{content:'✓';color:#1f8a5b;font-weight:800}
 .plan li.plus:before{content:'+';color:var(--red)}
+.plan li.no{color:#8a93a6}
+.plan li.no:before{content:'❌';font-size:13px;font-weight:400;line-height:1.5}
 .plan .btn{margin-top:auto;width:100%}
 .same{margin-top:22px;text-align:center;color:#c8d0df;font-size:15px}
 
@@ -237,7 +239,7 @@ footer .row{display:flex;flex-wrap:wrap;gap:8px 22px;margin-bottom:12px}
   <div class="wrap">
     <div class="kicker">Veja por dentro</div>
     <h2>Páginas reais do material</h2>
-    <p class="lead">Sem letra miúda: é exatamente isto que chega no seu e-mail.</p>
+    <p class="lead">Sem letra miúda: é isto que chega no seu e-mail. Guias, banco de repertórios e checklist são do plano Premium.</p>
     <div class="pages">
       <figure><a href="assets/amostra-redacao-001.webp" target="_blank" rel="noopener"><img src="assets/amostra-redacao-001.webp" width="820" height="1160" loading="lazy" alt="Página da redação 001, sobre a formação educacional de surdos, com raio-X"></a><figcaption>Redação 001 · tema oficial ENEM 2017</figcaption></figure>
       <figure><a href="assets/amostra-redacao-045.webp" target="_blank" rel="noopener"><img src="assets/amostra-redacao-045.webp" width="820" height="1160" loading="lazy" alt="Página da redação 045, sobre o envelhecimento na sociedade brasileira, com raio-X"></a><figcaption>Redação 045 · tema oficial ENEM 2025</figcaption></figure>
@@ -266,30 +268,33 @@ footer .row{display:flex;flex-wrap:wrap;gap:8px 22px;margin-bottom:12px}
 <section class="plans" id="planos">
   <div class="wrap">
     <div class="kicker" style="color:var(--amber)">Escolha o seu plano</div>
-    <h2>Os dois planos recebem o material completo</h2>
-    <p class="lead">Mesmas 100 redações, mesmos guias, mesmo PDF. O Premium acrescenta atendimento prioritário.</p>
+    <h2>Escolha o que vem com o seu plano</h2>
+    <p class="lead">As 100 redações-modelo vêm nos dois. O Premium acrescenta os guias de estudo e o atendimento prioritário por e-mail.</p>
     <div class="pgrid">
       <div class="plan">
         <h3>Básico</h3>
         <div class="price"><small>R$</small><span data-price="basic-n">14,90</span></div>
         <div class="fee">+ taxa de serviço de R$ 0,99 · pagamento único</div>
         <ul>
-          <li>100 redações-modelo com raio-X</li>
-          <li>Guia das 5 competências e dos 4 parágrafos</li>
-          <li>Banco de repertórios com índice</li>
-          <li>Checklist de autocorreção</li>
+          <li>100 redações-modelo</li>
+          <li class="no">Guia das 5 competências e dos 4 parágrafos</li>
+          <li class="no">Banco de repertórios com índice</li>
+          <li class="no">Checklist de autocorreção</li>
           <li>Acesso imediato, no celular ou para imprimir</li>
           <li>Garantia de 7 dias</li>
         </ul>
         <a class="btn dark" href="#" data-checkout="basic" data-cta="plano-basico">Quero o Básico</a>
       </div>
       <div class="plan prem">
-        <span class="badge">MESMO MATERIAL + PRIORIDADE</span>
+        <span class="badge">MAIS COMPLETO</span>
         <h3>Premium</h3>
         <div class="price"><small>R$</small><span data-price="premium-n">24,90</span></div>
         <div class="fee">+ taxa de serviço de R$ 0,99 · pagamento único</div>
         <ul>
-          <li>Tudo do Básico, sem exceção</li>
+          <li>Tudo do Básico</li>
+          <li class="plus">Guia das 5 competências e dos 4 parágrafos</li>
+          <li class="plus">Banco de repertórios com índice</li>
+          <li class="plus">Checklist de autocorreção</li>
           <li class="plus">Atendimento prioritário por e-mail para dúvidas sobre o material</li>
           <li>Acesso imediato, no celular ou para imprimir</li>
           <li>Garantia de 7 dias</li>
@@ -322,7 +327,7 @@ footer .row{display:flex;flex-wrap:wrap;gap:8px 22px;margin-bottom:12px}
     <details><summary>As redações tiraram nota 900 ou 1000 no ENEM?</summary><p>Não. São textos originais escritos para estudo, seguindo os critérios públicos da matriz de correção do ENEM, e não redações corrigidas pelo INEP. O objetivo é mostrar a estrutura completa funcionando em 100 temas diferentes. Nenhum material pode garantir nota.</p></details>
     <details><summary>Posso decorar um modelo e usar na prova?</summary><p>Não recomendamos. Trechos memorizados que não conversam com o tema podem ser considerados parte desconectada, o que a Cartilha do Participante prevê como motivo de nota zero. Use os modelos para aprender a estrutura e escreva com as suas palavras.</p></details>
     <details><summary>Serve para o ENEM do próximo ano e para outros vestibulares?</summary><p>Sim. Os 10 eixos reúnem assuntos que se repetem nas propostas de redação, e a estrutura dissertativo-argumentativa é a mesma pedida pelo ENEM. Para vestibulares com outro formato, confira o edital de cada um.</p></details>
-    <details><summary>Qual a diferença entre o Básico e o Premium?</summary><p>O material é exatamente o mesmo nos dois. O Premium inclui atendimento prioritário por e-mail para dúvidas sobre o conteúdo.</p></details>
+    <details><summary>Qual a diferença entre o Básico e o Premium?</summary><p>As 100 redações-modelo são as mesmas nos dois. O Premium inclui ainda o guia das 5 competências e dos 4 parágrafos, o banco de repertórios com índice, o checklist de autocorreção e o atendimento prioritário por e-mail para dúvidas sobre o material.</p></details>
     <details><summary>Consigo ler no celular?</summary><p>Sim. É um PDF que abre em qualquer celular, tablet ou computador, e pode ser impresso.</p></details>
     <details><summary>Sou professor. Posso usar com a minha turma?</summary><p>A compra dá direito a uso pessoal. Você pode usar os modelos para preparar suas aulas; para distribuir o arquivo aos alunos, fale com a gente pelo contato do rodapé.</p></details>
   </div>
