@@ -186,8 +186,24 @@ footer .row{display:flex;flex-wrap:wrap;gap:8px 22px;margin-bottom:12px}
 }
 @media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}.sticky{transition:none}}
 </style>
+<!-- VESPERA ENEM 2026: desliga sozinho em 08/11 13h -->
+<style>
+#vespera-bar{position:sticky;top:0;z-index:60;background:#ffd23f;color:#0d1b2e;font:800 15px/1.3 Inter,system-ui,sans-serif;text-align:center;padding:10px 14px}
+#vespera-bar b{font-weight:900}
+.vespera{padding:48px 16px;background:#0d1b2e;color:#fff}
+.vespera .in{max-width:880px;margin:0 auto}
+.vespera h2{font:900 clamp(26px,5vw,38px)/1.1 Inter,system-ui,sans-serif;margin:0 0 8px}
+.vespera h2 em{font-style:normal;color:#ffd23f}
+.vespera p.lead{color:#c9d6ea;font-size:17px;margin:0 0 22px}
+.vespera ol{list-style:none;padding:0;margin:0;display:grid;gap:12px}
+.vespera li{background:#fff;color:#0d1b2e;border-radius:14px;padding:16px 18px;display:flex;gap:14px;align-items:flex-start;font-size:16px;line-height:1.4}
+.vespera li b.t{flex:none;background:#ffd23f;border-radius:10px;padding:6px 10px;font-weight:900}
+.vespera .note{margin-top:18px;font-size:14px;color:#9fb2cc;border-left:4px solid #ffd23f;padding-left:12px}
+.vespera .go{display:inline-block;margin-top:22px;background:#ffd23f;color:#0d1b2e;font-weight:900;padding:14px 22px;border-radius:12px;text-decoration:none}
+</style>
 </head>
 <body>
+<div id="vespera-bar">A redação do ENEM é <b>amanhã, domingo 08/11</b> · portões fecham às 13h (Brasília) · faltam <b id="vespera-left">--</b></div>
 
 <header class="hero">
   <div class="wrap">
@@ -210,6 +226,19 @@ footer .row{display:flex;flex-wrap:wrap;gap:8px 22px;margin-bottom:12px}
     </div>
   </div>
 </header>
+<section class="vespera" id="vespera">
+  <div class="in">
+    <h2>Roteiro de véspera: <em>90 minutos hoje à noite</em></h2>
+    <p class="lead">Não é hora de estudar 100 textos. É hora de revisar a estrutura e descansar. Um jeito de usar o material hoje:</p>
+    <ol>
+      <li><b class="t">30 min</b><span>Leia <b>3 redações-modelo de eixos diferentes</b> (ex.: Educação, Tecnologia, Direitos humanos). Marque a tese, os 2 argumentos e o repertório de cada uma pelo raio-X.</span></li>
+      <li><b class="t">30 min</b><span>Escolha um tema que não está no material e monte <b>só a proposta de intervenção</b> com os 5 elementos: agente, ação, meio, finalidade e detalhamento.</span></li>
+      <li><b class="t">30 min</b><span>Escreva <b>só a introdução</b> de 2 temas diferentes, no modelo repertório + tese + 2 argumentos. Depois separe documento, caneta preta transparente e o cartão de confirmação, e durma.</span></li>
+    </ol>
+    <p class="note">Estrutura, não texto decorado: a Cartilha do Participante do INEP prevê nota zero para trechos desconectados do tema. Nenhum material garante nota. Confira horários e regras no edital e no seu Cartão de Confirmação.</p>
+    <a class="go" href="#planos">Quero revisar hoje à noite →</a>
+  </div>
+</section>
 
 <section class="nine" aria-label="Nível 900+">
   <div class="wrap">
@@ -409,6 +438,37 @@ const CONFIG = {
   new IntersectionObserver(es => { plansVisible = es[0].isIntersecting; tick(); }).observe(plans);
   function tick(){ st.classList.toggle('on', window.scrollY > 600 && !plansVisible); }
   window.addEventListener('scroll', tick, { passive: true });
+})();
+</script>
+<script>
+(function(){
+  var DEADLINE = Date.parse('2026-11-08T13:00:00-03:00'); // portões fecham (FATO, edital)
+  var bar = document.getElementById('vespera-bar');
+  var sec = document.getElementById('vespera');
+  var left = document.getElementById('vespera-left');
+  var h1 = document.querySelector('.hero h1');
+  var sub = document.querySelector('.hero .sub');
+  var oldH1 = h1 ? h1.innerHTML : '', oldSub = sub ? sub.innerHTML : '';
+  var sticky = document.querySelector('#sticky a, #sticky .btn');
+  var oldSticky = sticky ? sticky.textContent : '';
+  function on(){
+    if (h1) h1.innerHTML = 'A redação do ENEM é <em>amanhã.</em> Revise a estrutura hoje à noite.';
+    if (sub) sub.innerHTML = '100 redações-modelo completas, com o <b>raio-X da tese, dos repertórios e da proposta</b>. O PDF chega no seu e-mail em minutos e abre no celular. Use o roteiro de 90 minutos logo abaixo.';
+    if (sticky) sticky.textContent = 'Revisar hoje à noite →';
+  }
+  function off(){
+    if (bar) bar.remove(); if (sec) sec.remove();
+    if (h1) h1.innerHTML = oldH1; if (sub) sub.innerHTML = oldSub;
+    if (sticky) sticky.textContent = oldSticky;
+  }
+  function tick(){
+    var ms = DEADLINE - Date.now();
+    if (ms <= 0) { off(); return true; }
+    var h = Math.floor(ms/3600000), m = Math.floor(ms%3600000/60000);
+    if (left) left.textContent = h + 'h ' + (m<10?'0':'') + m + 'min';
+    return false;
+  }
+  if (!tick()) { on(); var t = setInterval(function(){ if (tick()) clearInterval(t); }, 30000); }
 })();
 </script>
 </body>
